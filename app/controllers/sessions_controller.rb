@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
   
-  privare
+  private
   
   def login(email, password)
     @user = User.find_by(email: email)
