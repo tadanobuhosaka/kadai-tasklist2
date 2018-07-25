@@ -8,7 +8,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @tasklists = @user.tasks.order('created_at DESC').page(params[:page])
+    if @user == current_user
+      @tasklists = @user.tasks.order('created_at DESC').page(params[:page])
+    else
+      @tasklists = []
+    end
     counts(@user)
   end
 

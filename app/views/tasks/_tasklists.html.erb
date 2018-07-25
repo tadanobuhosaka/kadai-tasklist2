@@ -9,7 +9,9 @@
           <%= link_to tasklist.user.name, user_path(tasklist.user) %> <span class="text-muted">posted at <%= tasklist.created_at %></span>
         </div>
         <div>
+          <p>Task</p>
           <p><%= tasklist.content %></p>
+          <p>Status</p>
           <p><%= tasklist.status %></p>
         </div>
         <div>
@@ -17,8 +19,9 @@
             <%= link_to "Delete", tasklist, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
           <% end %>
         </div>
-      </div>
     </li>
   <% end %>
-  <%= paginate tasklists %>
+  <% if tasklists.length > 0 %>
+    <%= paginate tasklists %>
+  <% end %>
 </ul>
